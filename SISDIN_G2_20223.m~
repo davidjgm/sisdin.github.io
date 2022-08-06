@@ -16,5 +16,4 @@ figure
 plot(t,x1)
 title('sin(2*pi*t/3)')
 
-% Cálculo de polos de la función F = (s+1)/(4s^3+2s^2+3s+1)
-polos = roots([4 2 3 1])
+% Cálculo de polos de la función F = (s+1)/(4s^2)
