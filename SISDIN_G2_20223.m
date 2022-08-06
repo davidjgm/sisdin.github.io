@@ -1,5 +1,5 @@
 % ============================================================
-% CURSO: SEÑALES Y SISTEMAS
+% CURSO: SISTEMAS DINÁMICOS
 % GRUPO: 2
 % SEMESTRE: 2022-3
 % PROFESOR: DAVID JULIAN GONZÁLEZ MALDONADO
