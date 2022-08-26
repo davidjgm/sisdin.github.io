@@ -32,3 +32,29 @@ Mp=k*e^(-zeta/sqrt(1-zeta^2)*pi) % Sobrepaso máximo
 ts=4/(zeta*omegan) % Tiempo de subida
 sys = tf(4,[1 5 90]) % Función de Transferencia
 step(sys,3)
+
+% Resolución de sistemas de ecuaciones lineales
+R1 = 1e3;
+R2 = 270;
+R3 = 330;
+Vs1 = 12;
+Vs2 = 5;
+A = [1 -1 -1;R1 0 R2;0 R3 -R2];
+B=[0;Vs1-Vs2;Vs2];
+%I = inv(A)*B
+I = A\B;
+
+% Sistemas Eléctricos
+R = 2;
+L = 1;
+C = 1;
+
+% Sistema RC
+VcVs1 = tf([1],[R*C 1])
+figure
+step(VcVs1,100)
+
+% Sistema RLC
+VcVs2 = tf([1],[L*C R*C 1])
+figure
+step(VcVs2,100)
