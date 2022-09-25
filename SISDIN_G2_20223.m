@@ -58,3 +58,20 @@ step(VcVs1,100)
 VcVs2 = tf([1],[L*C R*C 1])
 figure
 step(VcVs2,100)
+
+% ----------------------------------
+% CLASE 15/09/2022
+% ----------------------------------
+
+% 1 Polo negativo (ESTABLE)
+sis1 = tf(1,[1 1])
+impulse(sis1)
+% 1 Polo (o par de polos conjugados) en el origen (CRITICAMENTE ESTABLE)
+sis2 = tf(1,[1 0])
+impulse(sis2)
+% 2 Polos en el origen (INESTABLE)
+sis3 = tf(1,[1 0 0])
+impulse(sis3)
+
+sis = tf(1,[1 0 0 ])
+step(sis)
