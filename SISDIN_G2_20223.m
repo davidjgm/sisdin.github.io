@@ -75,3 +75,71 @@ impulse(sis3)
 
 sis = tf(1,[1 0 0 ])
 step(sis)
+
+
+% ----------------------------------
+% CLASE 04/10/2022
+% ----------------------------------
+close all
+% DIAGRAMA DE BODE
+omega = 0.01:0.01:1000;
+X = 1./(1i*omega +10);
+
+% Diagrama de Bode: Escala vertical lineal vs. Escala horizontal lineal
+mag = abs(X);
+fas = angle(X);
+figure
+subplot(2,1,1)
+plot(omega,mag)
+xlabel('Frecuencia (rad/s)')
+ylabel('Unidad de amplitud')
+h=gcf();
+text(50.0,0.08, {"La magnitud está concentrada","en las frecuencias bajas"})
+title('Magnitud: Eje vertical lineal - Eje horizontal lineal')
+
+subplot(2,1,2)
+plot(omega,fas)
+xlabel('Frecuencia (rad/s)')
+ylabel('rad')
+text(50.0,-0.2, {"La fase está concentrada","en las frecuencias bajas"})
+title('Fase: Eje vertical lineal - Eje horizontal lineal')
+
+% Diagrama de Bode: Escala vertical lineal vs. Escala horizontal logarítmica
+mag = abs(X);
+fas = angle(X);
+figure
+subplot(2,1,1)
+semilogx(omega,mag)
+xlabel('Frecuencia (rad/s)')
+ylabel('Unidad de amplitud')
+text(0.012,0.06, {"La magnitud en las frecuencias bajas","se amplia horizontalmente"})
+title('Magnitud: Eje vertical lineal - Eje horizontal logarítmico')
+subplot(2,1,2)
+semilogx(omega,fas)
+xlabel('Frecuencia (rad/s)')
+ylabel('rad')
+text(0.012,-0.5, {"La fase en las frecuencias bajas","se amplia horizontalmente"})
+title('Fase: Eje vertical lineal - Eje horizontal logarítmico')
+
+% Diagrama de Bode: 20*log10(Magnitud en Escala lineal) vs. Escala horizontal logarítmica
+mag = 20*log10(abs(X));
+fas = angle(X);
+figure
+subplot(2,1,1)
+semilogx(omega,mag)
+xlabel('Frecuencia (rad/s)')
+ylabel('dB (20*log_{10}(Mag))')
+text(0.012,-30, {"La magnitud en las frecuencias bajas","se amplia horizontalmente"})
+text(0.0512,-50, {"La atenuación de la magnitud","se convierte en una linea recta"})
+title('Magnitud: Eje vertical en decibeles - Eje horizontal logarítmico')
+subplot(2,1,2)
+semilogx(omega,fas)
+xlabel('Frecuencia (rad/s)')
+ylabel('rad')
+text(0.012,-0.5, {"La fase en las frecuencias bajas","se amplia horizontalmente"})
+title('Fase: Eje vertical lineal - Eje horizontal logarítmico')
+
+% Usando las funciones FFT y BODE
+sis1 = tf(1,[1 10]);
+figure
+bode(sis1)
